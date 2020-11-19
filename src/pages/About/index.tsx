@@ -40,6 +40,7 @@ const About: React.FC = () => {
       </LoadingContainer>
     );
   }
+
   return (
     <Container>
       <ProfileContent>

@@ -3,6 +3,7 @@ import {
   AccessTime,
   ArrowBackIosRounded,
   ArrowForwardIosRounded,
+  LoopRounded,
 } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 import devToApi from '../../services/devToApi';
@@ -21,6 +22,8 @@ import {
   Pagination,
   PaginationBtn,
   ArticleNotFound,
+  LoadingContainer,
+  Loading,
 } from './styles';
 
 interface IArticle {
@@ -37,6 +40,7 @@ const Home: React.FC = () => {
   const [articles, setArticles] = useState<IArticle[]>([]);
   const [page, setPage] = useState(1);
   const [firstArticle, setFirstArticle] = useState<IArticle>();
+  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
 
@@ -47,7 +51,9 @@ const Home: React.FC = () => {
       );
       setFirstArticle(resp.data.shift() || undefined);
       setArticles(resp.data || []);
+      setLoading(false);
     };
+    setLoading(true);
     loadArticles();
   }, [page]);
 
@@ -68,6 +74,17 @@ const Home: React.FC = () => {
     },
     [history],
   );
+
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <Loading>
+          <LoopRounded />
+        </Loading>
+        <span>Carregando...</span>
+      </LoadingContainer>
+    );
+  }
 
   if (articles.length === 0 && !firstArticle) {
     return (

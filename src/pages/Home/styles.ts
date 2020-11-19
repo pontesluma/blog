@@ -164,3 +164,39 @@ export const ArticleNotFound = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const LoadingContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+  span {
+    margin-top: 30px;
+  }
+`;
+
+export const Loading = styled.div`
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  animation: rotation 3s infinite linear;
+
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  transform-origin: center center;
+
+  color: #84ff89;
+
+  svg {
+    font-size: 100px;
+  }
+`;
