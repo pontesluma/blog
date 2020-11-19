@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Card, IconButton } from '@material-ui/core';
 
 interface FirstArticleCardProps {
-  bgImage: string;
+  bgimage: string;
 }
 
 export const Container = styled.div``;
@@ -20,10 +20,10 @@ export const FirstArticleCard = styled(Card)<FirstArticleCardProps>`
     color: #fff;
 
     ${props =>
-      props.bgImage
+      props.bgimage
         ? css`
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url(${props.bgImage});
+              url(${props.bgimage});
             background-position: center;
             background-repeat: none;
             background-size: cover;

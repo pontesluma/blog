@@ -103,7 +103,7 @@ const Home: React.FC = () => {
       <Content>
         {firstArticle && (
           <FirstArticleCard
-            bgImage={firstArticle.cover_image}
+            bgimage={firstArticle.cover_image}
             style={{
               gridColumn: '1 / 3',
             }}

@@ -70,7 +70,7 @@ const Article: React.FC = () => {
   }
   return (
     <Container>
-      {article.cover_image && <ThumbNail bgImage={article.cover_image} />}
+      {article.cover_image && <ThumbNail bgimage={article.cover_image} />}
       <Content>
         <Title>{article.title}</Title>
 

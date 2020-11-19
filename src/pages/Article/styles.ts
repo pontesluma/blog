@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Chip } from '@material-ui/core';
 
 interface ThumbNailProps {
-  bgImage: string;
+  bgimage: string;
 }
 
 export const Container = styled.div``;
@@ -27,7 +27,7 @@ export const ThumbNail = styled.div<ThumbNailProps>`
   && {
     ${props => css`
       background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url(${props.bgImage}) no-repeat center;
+        url(${props.bgimage}) no-repeat center;
       background-size: cover;
     `}
     height:400px;
