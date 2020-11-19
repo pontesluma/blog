@@ -50,7 +50,7 @@ const About: React.FC = () => {
           <span>
             Desenvolvedora full stack, 23 anos, brasileira.
             <br />
-            #WomaninTech
+            #WomanInTech
           </span>
         </ProfileInfo>
       </ProfileContent>
