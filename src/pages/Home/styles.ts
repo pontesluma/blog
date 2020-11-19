@@ -24,6 +24,9 @@ export const FirstArticleCard = styled(Card)<FirstArticleCardProps>`
         ? css`
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
               url(${props.bgImage});
+            background-position: center;
+            background-repeat: none;
+            background-size: cover;
           `
         : css`
             background: #84ff89;

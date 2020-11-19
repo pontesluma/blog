@@ -38,7 +38,7 @@ interface IArticle {
 
 const Home: React.FC = () => {
   const [articles, setArticles] = useState<IArticle[]>([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [firstArticle, setFirstArticle] = useState<IArticle>();
   const [loading, setLoading] = useState(true);
 
@@ -49,6 +49,7 @@ const Home: React.FC = () => {
       const resp = await devToApi.get(
         `/articles?username=pontesluma&per_page=8&page=${page}`,
       );
+
       setFirstArticle(resp.data.shift() || undefined);
       setArticles(resp.data || []);
       setLoading(false);
@@ -149,11 +150,11 @@ const Home: React.FC = () => {
       <Pagination>
         <PaginationBtn
           onClick={() => handleChangePage(-1)}
-          disabled={page === 1}
+          disabled={page === 0}
         >
           <ArrowBackIosRounded />
         </PaginationBtn>
-        <span>{page}</span>
+        <span>{page + 1}</span>
         <PaginationBtn
           onClick={() => handleChangePage(1)}
           disabled={articles.length < 7}

@@ -40,16 +40,6 @@ export const Title = styled.div`
   justify-content: center;
 
   font-size: 40px;
-  margin-bottom: 10px;
-  text-align: center;
-`;
-
-export const Subtitle = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  font-size: 20px;
   margin-bottom: 50px;
   text-align: center;
 `;
@@ -63,10 +53,15 @@ export const Body = styled.div`
   strong,
   h1,
   h2,
-  h3 {
+  h3,
+  ul {
     margin-bottom: 30px;
     text-align: justify;
     text-justify: inter-word;
+  }
+
+  li {
+    margin-bottom: 10px;
   }
 
   p {

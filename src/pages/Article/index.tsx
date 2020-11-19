@@ -9,7 +9,6 @@ import {
   Content,
   ThumbNail,
   Title,
-  Subtitle,
   Body,
   Tag,
   TagContainer,
@@ -74,7 +73,6 @@ const Article: React.FC = () => {
       {article.cover_image && <ThumbNail bgImage={article.cover_image} />}
       <Content>
         <Title>{article.title}</Title>
-        <Subtitle>{article.description}</Subtitle>
 
         <Body dangerouslySetInnerHTML={{ __html: article.body_html }} />
         <Author>
