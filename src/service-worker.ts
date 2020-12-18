@@ -91,6 +91,10 @@ registerRoute(
       new CacheableResponsePlugin({
         statuses: [0, 200],
       }) as WorkboxPlugin,
+      new ExpirationPlugin({
+        maxEntries: 10,
+        maxAgeSeconds: 0.5 * 60 * 60, // half an hour
+      }),
     ],
   }),
 );
