@@ -83,10 +83,10 @@ self.addEventListener('message', event => {
 // Any other custom service worker logic can go here.
 registerRoute(
   ({ url }: { url: URL }) => {
-    return url.origin === 'https://dev.to';
+    return url.origin === 'https://dev.to' && url.pathname === '/api/articles';
   },
   new CacheFirst({
-    cacheName: 'devto-cache',
+    cacheName: 'devto-home-cache',
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -98,3 +98,69 @@ registerRoute(
     ],
   }),
 );
+
+registerRoute(
+  ({ url }: { url: URL }) => {
+    return (
+      url.origin === 'https://dev.to' && url.pathname.includes('/users/515239')
+    );
+  },
+  new CacheFirst({
+    cacheName: 'profile-info-cache',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }) as WorkboxPlugin,
+      new ExpirationPlugin({
+        maxEntries: 10,
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+      }),
+    ],
+  }),
+);
+
+registerRoute(
+  ({ url }: { url: URL }) => {
+    return (
+      url.origin === 'https://res.cloudinary.com' &&
+      url.pathname.includes('/user/profile_image')
+    );
+  },
+  new CacheFirst({
+    cacheName: 'profile-img-cache',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }) as WorkboxPlugin,
+      new ExpirationPlugin({
+        maxEntries: 10,
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+      }),
+    ],
+  }),
+);
+
+registerRoute(
+  ({ url }: { url: URL }) => {
+    return (
+      url.origin === 'https://dev.to' && url.pathname.includes('/articles/')
+    );
+  },
+  new CacheFirst({
+    cacheName: 'devto-article-cache',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }) as WorkboxPlugin,
+      new ExpirationPlugin({
+        maxEntries: 10,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+      }),
+    ],
+  }),
+);
+
+registerRoute(item => {
+  console.log(item);
+  return false;
+});
